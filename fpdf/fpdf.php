@@ -907,6 +907,7 @@ function Image($file,$x,$y,$w=0,$h=0,$type='',$link='')
 		}
 		$type=strtolower($type);
 		$mqr=get_magic_quotes_runtime();
+		/*posible solucion ini_set('magic_quotes_runtime', 0);*/
 		set_magic_quotes_runtime(0);
 		if($type=='jpg' or $type=='jpeg')
 			$info=$this->_parsejpg($file);

@@ -21,9 +21,9 @@ var MenuPrincipal = [
 	],
 	[null,'Ventas clientes',null,null,'Ventas clientes',
 		[null,'Ventas Mostrador','./ventas_mostrador/index.php','principal','Ventas Mostrador'],
-		[null,'Facturas','./facturas_clientes/index.php','principal','Facturas'],
+		[null,'Facturas','./facturas_clientes/index.php','principal','Facturas'],/*,
 		[null,'Albaranes','./albaranes_clientes/index.php','principal','Albaranes'],
-		[null,'Facturar albaranes','./lote_albaranes_clientes/index.php','principal','Facturar albaranes']
+		[null,'Facturar albaranes','./lote_albaranes_clientes/index.php','principal','Facturar albaranes']*/
 	],
 	[null,'Compras proveedores',null,null,'Compras proveedores',
 		[null,'Facturas','./facturas_proveedores/index.php','principal','Proveedores'],
@@ -43,12 +43,12 @@ var MenuPrincipal = [
 		[null,'Ubicaciones','./ubicaciones/index.php','principal','Ubicaciones'],
 		[null,'Embalajes','./embalajes/index.php','principal','Embalajes'],
 		[null,'Formas de pago','./formaspago/index.php','principal','Formas de pago'],
-	],
+	]/*,
 	[null,'Copias Seguridad',null,null,'Copias de Seguridad',
 		[null,'Hacer copia','./backup/hacerbak.php','principal','Hacer copia'],
 		[null,'Restaurar copia','./backup/restaurarbak.php','principal','Restaurar copia'],
-	],
-	[null,'Creditos','creditos.php','principal','Creditos']
+	]/*,
+	[null,'Creditos','creditos.php','principal','Creditos']*/
 ];
 
 --></script>

@@ -59,13 +59,18 @@ if ($cadena_busqueda<>"") {
 		function buscar() {
 			var cadena;
 			cadena=hacer_cadena_busqueda();
-			document.getElementById("cadena_busqueda").value=cadena;
-			if (document.getElementById("iniciopagina").value=="") {
-				document.getElementById("iniciopagina").value=1;
-			} else {
-				document.getElementById("iniciopagina").value=document.getElementById("paginas").value;
+
+			console.log(cadena);
+
+			if(cadena){			
+				document.getElementById("cadena_busqueda").value=cadena;
+				if (document.getElementById("iniciopagina").value=="") {
+					document.getElementById("iniciopagina").value=1;
+				} else {
+					document.getElementById("iniciopagina").value=document.getElementById("paginas").value;
+				}
+				document.getElementById("form_busqueda").submit();
 			}
-			document.getElementById("form_busqueda").submit();
 		}
 		
 		function paginar() {
@@ -74,6 +79,14 @@ if ($cadena_busqueda<>"") {
 		}
 		
 		function hacer_cadena_busqueda() {
+			
+			/*Etiquetas de validacion*/
+			var codvalidacion 		 = document.getElementById("codvalidacion");
+			var telvalidacion 		 = document.getElementById("telvalidacion");
+			var nifvalidacion 		 = document.getElementById("nifvalidacion");
+			var provinciasvalidacion = document.getElementById("provinciasvalidacion");
+
+			/*Valores de los inputs*/
 			var codcliente=document.getElementById("codcliente").value;
 			var nombre=document.getElementById("nombre").value;
 			var nif=document.getElementById("nif").value;			
@@ -81,9 +94,84 @@ if ($cadena_busqueda<>"") {
 			var localidad=document.getElementById("localidad").value;
 			var telefono=document.getElementById("telefono").value;
 			var cadena="";
-			cadena="~"+codcliente+"~"+nombre+"~"+nif+"~"+provincia+"~"+localidad+"~"+telefono+"~";
-			return cadena;
+
+			/*Lipmpiar validaciones*/
+			codvalidacion.innerHTML = '';
+			telvalidacion.innerHTML = '';
+			nifvalidacion.innerHTML = '';
+			provinciasvalidacion.innerHTML = '';
+
+			/*bandera de validaciones*/
+
+			var x = 0;
+
+			if(codcliente === ''){
+
+			 	codvalidacion.innerHTML = "<strong> CAMPO ES OBLIGATORIO </strong>";
+			 	x++;
+			 
+			}else{
+			 	
+			 	if( isNaN(codcliente) ){
+			 	
+			 		codvalidacion.innerHTML = "<strong>CAMPO SOLO DEBE CONTENER NUMEROS</strong>"
+			 		x++;
+			 	}else{
+			 		//return cadena; 
+			 		cadena+="~"+codcliente;
+			 	}
+
 			}
+
+			cadena+="~"+nombre;
+
+			if( nif === ''){
+				
+				if( isNaN(nif) ){
+					nifvalidacion.innerHTML = "<strong> CAMPO SOLO DEBE CONTENER NUMEROS </strong>";
+					x++;
+				}else{
+					cadena+="~"+nif;
+				}		
+			}else{
+				cadena+="~"+nif;
+			}
+
+			if(provincia === '0'){
+				provinciasvalidacion.innerHTML = "<strong> CAMPO ES OBLIGATORIO </strong>";
+				x++;
+			}else{
+				cadena+="~"+provincia;
+			}
+
+			cadena+="~"+localidad;
+
+			 if(telefono !== ''){
+			
+			 	if( isNaN(telefono) ){
+			 		telvalidacion.innerHTML = '<strong>Campo debe contener solo numeros</strong>';
+			 		x++;
+				 }else{
+				 	cadena+="~"+telefono+"~";
+				 }
+			}else{
+					cadena+="~"+telefono+"~";
+			}
+
+			if(x==0){
+				return cadena
+			}else{
+				return false;
+			}
+		}
+
+		function validaNumero(valor , cadena ,elemento){					
+			if(!isNaN(valor) && valor != ''){
+				return true
+			}else{
+				return '';
+			}			
+		}
 			
 		function limpiar() {
 			document.getElementById("form_busqueda").reset();
@@ -97,7 +185,9 @@ if ($cadena_busqueda<>"") {
 		function validarcliente(){
 			var codigo=document.getElementById("codcliente").value;
 			miPopup = window.open("comprobarcliente.php?codcliente="+codigo,"frame_datos","width=700,height=80,scrollbars=yes");
-		}	
+		}
+
+			
 		
 		</script>
 	</head>
@@ -110,10 +200,10 @@ if ($cadena_busqueda<>"") {
 				<form id="form_busqueda" name="form_busqueda" method="post" action="rejilla.php" target="frame_rejilla">
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
-							<td width="16%">Codigo de cliente </td>
-							<td width="68%"><input id="codcliente" type="text" class="cajaPequena" NAME="codcliente" maxlength="10" value="<? echo $codcliente?>"> <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.png" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
+							<td width="16%">Codigo de cliente *</td>
+							<td width="38%"><input id="codcliente" type="text" class="cajaPequena" NAME="codcliente" maxlength="10" value="<? echo $codcliente?>"> <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar cliente" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.png" width="16" height="16" onClick="validarcliente()" title="Validar cliente" onMouseOver="style.cursor=cursor"></td>
 							<td width="5%">&nbsp;</td>
-							<td width="5%">&nbsp;</td>
+							<td width="35%">&nbsp; <span style='color:red;' id="codvalidacion"></span></td>
 							<td width="6%" align="right"></td>
 						</tr>
 						<tr>
@@ -123,10 +213,10 @@ if ($cadena_busqueda<>"") {
 							<td>&nbsp;</td>
 						</tr>
 						<tr>
-						  <td>NIF / CIF</td>
+						  <td>NIF / CIF </td>
 						  <td><input id="nif" type="text" class="cajaPequena" NAME="nif" maxlength="15" value="<? echo $nif?>"></td>
 						  <td>&nbsp;</td>
-						  <td>&nbsp;</td>
+						  <td >&nbsp; <span style='color:red;' id="nifvalidacion"></span></td>
 						  <td>&nbsp;</td>
 					  </tr>
 						<?php
@@ -135,7 +225,7 @@ if ($cadena_busqueda<>"") {
 						$contador=0;
 					  ?>
 						<tr>
-							<td>Provincia</td>
+							<td>Provincia * </td>
 							<td><select id="cboProvincias" name="cboProvincias" class="comboMedio">
 								<option value="0" selected>Todas las provincias</option>
 								<?php
@@ -147,7 +237,10 @@ if ($cadena_busqueda<>"") {
 								<? }
 								$contador++;
 								} ?>				
-								</select>							</td>
+								</select></td>
+								<td>&nbsp;</td>
+								<td width="35%">&nbsp; <span style='color:red;' id="provinciasvalidacion"></span></td>
+					    		<td>&nbsp;</td>
 					    </tr>
 					  <tr>
 						  <td>Localidad</td>
@@ -160,7 +253,7 @@ if ($cadena_busqueda<>"") {
 						  <td>Tel&eacute;fono</td>
 						  <td><input id="telefono" type="text" class="cajaPequena" NAME="telefono" maxlength="15" value="<? echo $telefono?>"></td>
 						  <td>&nbsp;</td>
-						  <td>&nbsp;</td>
+						 <td width="25%">&nbsp; <span style='color:red;' id="telvalidacion"></span></td>
 						  <td>&nbsp;</td>
 					  </tr>
 					</table>

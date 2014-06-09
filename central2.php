@@ -81,12 +81,12 @@ $rs_borrar=mysql_query($sel_borrar);
   </tr>
   <tr height="200px">
     <td>&nbsp;</td>
-    <td><div align="center"><img src="img/central.jpg" width="550" height="200" border="0" /></div></td>
+    <td><!--<div align="center"><img src="img/central.jpg" width="550" height="200" border="0" /></div>--></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><div align="center" class="Estilo6">CodeKa Facturaci&oacute;n Web </div></td>
+    <td><div align="center" class="Estilo6">Facturaci&oacute;n Web </div></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
