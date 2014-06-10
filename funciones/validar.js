@@ -1,4 +1,4 @@
-/*
+		/*
 funciones de javascript para comprobar formularios
 creadas por: Duilio Palacios
 e-mail: solo@otrotiempo.com
@@ -11,21 +11,24 @@ function validar(formulario,mandar) {
 	modificado = esModificado();
 	longitud = campos.length;
 
-	console.log(campos);
+
 
 	for (i=0; i<longitud; i++) {
 		var campo = new clsCampo( campos.item(i) );
-
 		if( campo.type == "text" )
-			if ( !( campo.esObligatorio() && campo.vacio() ) ) {					
-			  switch ( campo.tipo ) {
-				case 't': campo.soloTexto(); break;
-				case 'n': campo.natural(); break;
-				case 'z': campo.entero(); break;
-				case 'q': campo.realPositivo(); break;
-				case 'r': campo.numeroReal(); break;
-				case 'e': campo.correo(); break;
-			  }
+			if ( ( campo.esObligatorio() && campo.vacio() ) ) {	
+				/*aqui tenia el mismo case de abajo*/							 			
+			}else{
+				if(campos[i].value!=''){					
+					switch ( campo.tipo ) {
+						case 't': campo.soloTexto(); break;
+						case 'n': campo.natural(); break;
+						case 'z': campo.entero(); break;
+						case 'q': campo.realPositivo(); break;
+						case 'r': campo.numeroReal(); break;
+						case 'e': campo.correo(); break;
+					  }
+				}
 			}
 		else if ( ( campo.type == "file" ) || ( campo.type == "password" ) )
 			if ( !modificado && campo.esObligatorio() ) campo.vacio();
@@ -54,7 +57,7 @@ function validar(formulario,mandar) {
 /***/
 function clsCampo (campo) {
 	this.campo = campo;
-	this.campo.valor = campo.value;
+//	this.campo.value = campo.value;
 	this.type = this.campo.getAttribute("type");
 	this.tipo = this.campo.name.charAt(0).toLowerCase();
 	this.error = false;

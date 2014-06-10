@@ -3,7 +3,7 @@
 	<head>
 		<title>Principal</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
-		<script type="text/javascript" src="../funciones/validar.js"></script>
+		<!--<script type="text/javascript" src="../funciones/validar.js"></script> no carga correctamente la valudacion podemos ver si es cache-->
 		<script language="javascript">
 		
 		function cancelar() {
@@ -41,7 +41,8 @@ function validar(formulario,mandar) {
 	for (i=0; i<longitud; i++) {
 		var campo = new clsCampo( campos.item(i) );
 		if( campo.type == "text" )
-			if ( ( campo.esObligatorio() && campo.vacio() ) ) {								 			
+			if ( ( campo.esObligatorio() && campo.vacio() ) ) {	
+				/*aqui tenia el mismo case de abajo*/							 			
 			}else{
 				if(campos[i].value!=''){					
 					switch ( campo.tipo ) {

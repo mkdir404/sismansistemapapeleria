@@ -7,6 +7,7 @@ include("conectar.php");
   <script language="JavaScript" src="menu/JSCookMenu.js"></script>
   <link rel="stylesheet" href="menu/theme.css" type="text/css">
   <script language="JavaScript" src="menu/theme.js"></script>
+  <script type="text/javascript" src="funciones/validar.js"></script>
   <script language="JavaScript">
 <!--
 var MenuPrincipal = [
