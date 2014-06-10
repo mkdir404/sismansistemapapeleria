@@ -9,7 +9,9 @@ function validar(formulario,mandar) {
 	var listaErrores = document.getElementById("lista-errores");
 	limpiarNodo(listaErrores);
 	modificado = esModificado();
-	longitud = campos.length;	
+	longitud = campos.length;
+
+	console.log(campos);
 
 	for (i=0; i<longitud; i++) {
 		var campo = new clsCampo( campos.item(i) );
@@ -52,7 +54,7 @@ function validar(formulario,mandar) {
 /***/
 function clsCampo (campo) {
 	this.campo = campo;
-//	this.campo.value = campo.value;
+	this.campo.valor = campo.value;
 	this.type = this.campo.getAttribute("type");
 	this.tipo = this.campo.name.charAt(0).toLowerCase();
 	this.error = false;
