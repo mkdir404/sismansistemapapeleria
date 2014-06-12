@@ -73,7 +73,7 @@ $rs_borrar=mysql_query($sel_borrar);
 </head>
 
 <body>
-<table width="90%" border="0" align="center">
+<!--<table width="90%" border="0" align="center">
   <tr height="90px">
     <td>&nbsp;</td>
     <td>&nbsp;</td>
@@ -81,7 +81,7 @@ $rs_borrar=mysql_query($sel_borrar);
   </tr>
   <tr height="200px">
     <td>&nbsp;</td>
-    <td><!--<div align="center"><img src="img/central.jpg" width="550" height="200" border="0" /></div>--></td>
+    <td><div align="center"><img src="img/central.jpg" width="550" height="200" border="0" /></div></td>
     <td>&nbsp;</td>
   </tr>
   <tr>
@@ -123,6 +123,6 @@ $rs_borrar=mysql_query($sel_borrar);
       </table></td>
       <td>&nbsp;</td>
     </tr>
-</table>
+</table>-->
 </body>
 </html>

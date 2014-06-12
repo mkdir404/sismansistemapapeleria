@@ -40,7 +40,7 @@
 						</tr>
 						<tr>
 						  <td>NIF / CIF</td>
-						  <td><input id="nif" type="text" class="cajaPequena" NAME="anif" maxlength="15"></td>
+						  <td><input id="nif" type="text" class="cajaPequena" NAME="znif" maxlength="15"></td>
 				      </tr>
 						<tr>
 						  <td>Direcci&oacute;n</td>
@@ -84,27 +84,27 @@
 				        </tr>
 						<tr>
 							<td>Cuenta bancaria</td>
-							<td><input id="cuentabanco" type="text" class="cajaGrande" NAME="acuentabanco" maxlength="20"></td>
+							<td><input id="cuentabanco" type="text" class="cajaGrande" NAME="zcuentabanco" maxlength="20"></td>
 					    </tr>
 						<tr>
 							<td>C&oacute;digo postal </td>
-							<td><input id="codpostal" type="text" class="cajaPequena" NAME="acodpostal" maxlength="5"></td>
+							<td><input id="codpostal" type="text" class="cajaPequena" NAME="zcodpostal" maxlength="5"></td>
 					    </tr>
 						<tr>
 							<td>Tel&eacute;fono </td>
-							<td><input id="telefono" name="atelefono" type="text" class="cajaPequena" maxlength="14"></td>
+							<td><input id="telefono" name="ztelefono" type="text" class="cajaPequena" maxlength="14"></td>
 					    </tr>
 						<tr>
 							<td>M&oacute;vil</td>
-							<td><input id="movil" name="amovil" type="text" class="cajaPequena" maxlength="14"></td>
+							<td><input id="movil" name="zmovil" type="text" class="cajaPequena" maxlength="14"></td>
 					    </tr>
 						<tr>
 							<td>Correo electr&oacute;nico  </td>
-							<td><input NAME="aemail" type="text" class="cajaGrande" id="email" size="35" maxlength="35"></td>
+							<td><input NAME="eemail" type="text" class="cajaGrande" id="eemail" size="35" maxlength="35"></td>
 					    </tr>
 												<tr>
 							<td>Direcci&oacute;n web </td>
-							<td><input NAME="aweb" type="text" class="cajaGrande" id="web" size="45" maxlength="45"></td>
+							<td><input NAME="uweb" type="text" class="cajaGrande" id="web" size="45" maxlength="45"></td>
 					    </tr>
 					</table>
 			  </div>

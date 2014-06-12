@@ -173,11 +173,11 @@ include ("../conectar.php"); ?>
 					    </tr>
 						<tr>
 						 <td>Stock</td>
-						  <td><input NAME="nstock" type="text" class="cajaPequena" id="stock" size="10" maxlength="10"> unidades</td>
+						  <td><input NAME="zstock" type="text" class="cajaPequena" id="stock" size="10" maxlength="10"> unidades</td>
 				      </tr>
 					  	<tr>
 						 <td>Stock m&iacute;nimo</td>
-						  <td><input NAME="nstock_minimo" type="text" class="cajaPequena" id="stock_minimo" size="8" maxlength="8"> unidades</td>
+						  <td><input NAME="zstock_minimo" type="text" class="cajaPequena" id="stock_minimo" size="8" maxlength="8"> unidades</td>
 				      </tr>
 					  	<tr>
 						 <td>Aviso m&iacute;nimo</td>

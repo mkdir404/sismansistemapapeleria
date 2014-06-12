@@ -27,6 +27,7 @@ function validar(formulario,mandar) {
 						case 'q': campo.realPositivo(); break;
 						case 'r': campo.numeroReal(); break;
 						case 'e': campo.correo(); break;
+						case 'u': campo.validaURL(); break;
 					  }
 				}
 			}
@@ -114,6 +115,15 @@ clsCampo.prototype.formatoNombre = function formatoNombre() {
 	nombre = this.campo.name;
 	return nombre.charAt(1).toUpperCase()+nombre.replace(/_/g,' ').substr(2);
 }
+
+
+clsCampo.prototype.validaURL = function () {	
+	var regex=/^w+([\.\-\w]+)?\.([a-z]{2,4}|travel)(:\d{2,5})?(\/.*)?$/i;
+	if(regex.test( this.campo.value ) ) return true;
+	this.error =  'debe eligir una "'+this.formatoNombre()+'" valida';
+	return false
+}
+
 function enviar(formulario) {	
 //	formulario.boton.setAttribute('disabled','disabled');
 	formulario.submit();

@@ -27,6 +27,7 @@ if ($cadena_busqueda<>"") {
 	<head>
 		<title>Proveedores</title>
 		<link href="../estilos/estilos.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="../funciones/validar.js"></script>
 		<script language="javascript">
 		
 		function inicio() {
@@ -59,13 +60,16 @@ if ($cadena_busqueda<>"") {
 		function buscar() {
 			var cadena;
 			cadena=hacer_cadena_busqueda();
-			document.getElementById("cadena_busqueda").value=cadena;
-			if (document.getElementById("iniciopagina").value=="") {
-				document.getElementById("iniciopagina").value=1;
-			} else {
-				document.getElementById("iniciopagina").value=document.getElementById("paginas").value;
+
+			if(cadena){	
+				document.getElementById("cadena_busqueda").value=cadena;
+				if (document.getElementById("iniciopagina").value=="") {
+					document.getElementById("iniciopagina").value=1;
+				} else {
+					document.getElementById("iniciopagina").value=document.getElementById("paginas").value;
+				}
+				document.getElementById("form_busqueda").submit();
 			}
-			document.getElementById("form_busqueda").submit();
 		}
 		
 		function paginar() {
@@ -73,7 +77,7 @@ if ($cadena_busqueda<>"") {
 			document.getElementById("form_busqueda").submit();
 		}
 		
-		function hacer_cadena_busqueda() {
+		/*function hacer_cadena_busqueda() {
 			var codproveedor=document.getElementById("codproveedor").value;
 			var nombre=document.getElementById("nombre").value;
 			var nif=document.getElementById("nif").value;			
@@ -83,10 +87,106 @@ if ($cadena_busqueda<>"") {
 			var cadena="";
 			cadena="~"+codproveedor+"~"+nombre+"~"+nif+"~"+provincia+"~"+localidad+"~"+telefono+"~";
 			return cadena;
+			}*/
+
+		function hacer_cadena_busqueda() {
+		
+			/*Etiquetas de validacion*/
+			/*var codvalidacion 		 = document.getElementById("codvalidacion");
+			var telvalidacion 		 = document.getElementById("telvalidacion");
+			var nifvalidacion 		 = document.getElementById("nifvalidacion");
+			var provinciasvalidacion = document.getElementById("provinciasvalidacion");*/
+			var listaErrores 	     = document.getElementById('lista-errores');
+		
+			/*Limpias errores*/
+
+			limpiarNodo(listaErrores);
+
+			/*Valores de los inputs*/
+			var codcliente=document.getElementById("codproveedor").value;
+			var nombre=document.getElementById("nombre").value;
+			var nif=document.getElementById("nif").value;			
+			var provincia=document.getElementById("cboProvincias").value;
+			var localidad=document.getElementById("localidad").value;
+			var telefono=document.getElementById("telefono").value;
+			var cadena="";
+
+			/*Lipmpiar validaciones*/
+			/*codvalidacion.innerHTML = '';
+			telvalidacion.innerHTML = '';
+			nifvalidacion.innerHTML = '';
+			provinciasvalidacion.innerHTML = '';*/
+			
+
+			/*bandera de validaciones*/
+
+			var x = 0;
+
+			if(codcliente !== ''){
+
+				if( isNaN(codcliente) ){
+			 	
+			 		//codvalidacion.innerHTML = "<strong>CAMPO SOLO DEBE CONTENER NUMEROS</strong>"
+			 		listaErrores.appendChild( crearLI('EL CAMPO "CODIGO DE CLIENTE" SOLO PUEDE TENER NUMEROS ENTEROS"') );
+			 		x++;
+			 	}else{
+			 		//return cadena; 
+			 		cadena+="~"+codcliente;
+			 	}			 				 
+			}else{
+				cadena+="~"+codcliente;
 			}
+
+			cadena+="~"+nombre;
+
+			if( nif !== ''){
+				
+				if( isNaN(nif) ){
+					//nifvalidacion.innerHTML = "<strong> CAMPO SOLO DEBE CONTENER NUMEROS </strong>";
+					listaErrores.appendChild( crearLI('EL CAMPO "NIF" SOLO PUEDE TENER NUMEROS ENTEROS"') );
+					x++;
+				}else{
+					cadena+="~"+nif;
+				}		
+			}else{
+				cadena+="~"+nif;
+			}
+
+			/*if(provincia !== '0'){
+				//provinciasvalidacion.innerHTML = "<strong> CAMPO ES OBLIGATORIO </strong>";
+				listaErrores.appendChild( crearLI('DEBE COMPLETAR EL CAMPO "PROVINCIA"') );
+				x++;
+			}else{*/
+				cadena+="~"+provincia;
+			//}
+
+			cadena+="~"+localidad;
+
+			 if(telefono !== ''){
+			
+			 	if( isNaN(telefono) ){
+			 		//telvalidacion.innerHTML = '<strong>Campo debe contener solo numeros</strong>';
+			 		listaErrores.appendChild( crearLI('EL CAMPO "TELEFONO" SOLO PUEDE TENER NUMEROS ENTEROS"') );
+			 		x++;
+				 }else{
+				 	cadena+="~"+telefono+"~";
+				 }
+			}else{
+					cadena+="~"+telefono+"~";
+			}
+
+			if(x==0){
+				return cadena
+			}else{
+				return false;
+			}
+		}	
 			
 		function limpiar() {
 			document.getElementById("form_busqueda").reset();
+			var listaErrores = document.getElementById('lista-errores');
+			/*Limpias errores*/
+			limpiarNodo(listaErrores);
 		}
 		
 		var miPopup
@@ -112,9 +212,9 @@ if ($cadena_busqueda<>"") {
 					<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>					
 						<tr>
 							<td width="16%">Codigo de proveedor </td>
-							<td width="68%"><input id="codproveedor" type="text" class="cajaPequena" NAME="codproveedor" maxlength="10" value="<? echo $codproveedor?>">  <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar proveedor" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.png" width="16" height="16" onClick="validarproveedor()" title="Validar proveedor" onMouseOver="style.cursor=cursor"></td>
-							<td width="5%">&nbsp;</td>
-							<td width="5%">&nbsp;</td>
+							<td width="38%"><input id="codproveedor" type="text" class="cajaPequena" NAME="codproveedor" maxlength="10" value="<? echo $codproveedor?>">  <img src="../img/ver.png" width="16" height="16" onClick="abreVentana()" title="Buscar proveedor" onMouseOver="style.cursor=cursor"> <img src="../img/cliente.png" width="16" height="16" onClick="validarproveedor()" title="Validar proveedor" onMouseOver="style.cursor=cursor"></td>
+							<td width="42%" rowspan="14" align="left" valign="top"><ul id="lista-errores"></ul></td>
+							<td width="35%">&nbsp;</td>
 							<td width="6%" align="right"></td>
 						</tr>
 						<tr>

@@ -203,11 +203,11 @@ $codigobarras=mysql_result($rs_query,0,"codigobarras");
 					    </tr>
 						<tr>
 						 <td>Stock</td>
-						  <td colspan="2"><input NAME="nstock" type="text" class="cajaPequena" id="stock" size="10" maxlength="10" value="<?php echo mysql_result($rs_query,0,"stock")?>"> unidades</td>
+						  <td colspan="2"><input NAME="zstock" type="text" class="cajaPequena" id="stock" size="10" maxlength="10" value="<?php echo mysql_result($rs_query,0,"stock")?>"> unidades</td>
 				      </tr>
 					  	<tr>
 						 <td>Stock m&iacute;nimo</td>
-						  <td colspan="2"><input NAME="nstock_minimo" type="text" class="cajaPequena" id="stock_minimo" size="8" maxlength="8" value="<?php echo mysql_result($rs_query,0,"stock_minimo")?>"> unidades</td>
+						  <td colspan="2"><input NAME="zstock_minimo" type="text" class="cajaPequena" id="stock_minimo" size="8" maxlength="8" value="<?php echo mysql_result($rs_query,0,"stock_minimo")?>"> unidades</td>
 				      </tr>
 					  	<tr>
 						 <td>Aviso m&iacute;nimo</td>

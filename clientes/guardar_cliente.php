@@ -5,18 +5,18 @@ $accion=$_POST["accion"];
 if (!isset($accion)) { $accion=$_GET["accion"]; }
 
 $nombre=$_POST["Anombre"];
-$nif=$_POST["anif"];
+$nif=$_POST["znif"];
 $direccion=$_POST["adireccion"];
 $localidad=$_POST["alocalidad"];
 $codprovincia=$_POST["cboProvincias"];
 $codformapago=$_POST["cboFPago"];
 $codentidad=$_POST["cboBanco"];
-$cuentabanco=$_POST["acuentabanco"];
-$codpostal=$_POST["acodpostal"];
-$telefono=$_POST["atelefono"];
-$movil=$_POST["amovil"];
-$email=$_POST["aemail"];
-$web=$_POST["aweb"];
+$cuentabanco=$_POST["zcuentabanco"];
+$codpostal=$_POST["zcodpostal"];
+$telefono=$_POST["ztelefono"];
+$movil=$_POST["zmovil"];
+$email=$_POST["eemail"];
+$web=$_POST["uweb"];
 
 if ($accion=="alta") {
 	$query_operacion="INSERT INTO clientes (codcliente, nombre, nif, direccion, codprovincia, localidad, codformapago, codentidad, cuentabancaria, codpostal, telefono, movil, email, web, borrado) VALUES ('', '$nombre', '$nif', '$direccion', '$codprovincia', '$localidad', '$codformapago', '$codentidad', '$cuentabanco', '$codpostal', '$telefono', '$movil', '$email', '$web', '0')";					
