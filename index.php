@@ -27,9 +27,9 @@ var MenuPrincipal = [
 		[null,'Facturar albaranes','./lote_albaranes_clientes/index.php','principal','Facturar albaranes']*/
 	],
 	[null,'Compras proveedores',null,null,'Compras proveedores',
-		[null,'Facturas','./facturas_proveedores/index.php','principal','Proveedores'],
+		[null,'Facturas','./facturas_proveedores/index.php','principal','Proveedores'],/*,
 		[null,'Albaranes','./albaranes_proveedores/index.php','principal','Albaranes'],
-		[null,'Facturar albaranes','./lote_albaranes_proveedores/index.php','principal','Facturar albaranes'],
+		[null,'Facturar albaranes','./lote_albaranes_proveedores/index.php','principal','Facturar albaranes'],*/
 	],
 	[null,'Tesoreria',null,null,'Tesoreria',
 		[null,'Cobros','./cobros/index.php','principal','Cobros'],

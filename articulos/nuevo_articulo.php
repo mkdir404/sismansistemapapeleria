@@ -12,8 +12,17 @@ include ("../conectar.php"); ?>
 		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
 		<script type="text/javascript" src="../funciones/validar.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  		<script type="text/javascript" src="../funciones/calendario.js"></script>
+  		<style>
+		div.ui-datepicker{
+		 font-size:10px;
+		}
+  		</style>  		
 		<script language="javascript">
-		
+
 		function cancelar() {
 			location.href="index.php";
 		}
@@ -193,7 +202,7 @@ include ("../conectar.php"); ?>
 						<tr>
 						<? $hoy=date("d/m/Y"); ?>
 							<td>Fecha de alta</td>
-							<td><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>"  readonly> <img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
+							<td><input NAME="fecha" type="text" class="cajaPequena datepicker" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>"  readonly> <!--<img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">-->
         <script type="text/javascript">
 					Calendar.setup(
 					  {

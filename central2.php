@@ -73,6 +73,8 @@ $rs_borrar=mysql_query($sel_borrar);
 </head>
 
 <body>
+
+<img src="fpdf/logo/logo.jpg" alt="" align="center" style="margin-left:35%;margin-top:10%;" />
 <!--<table width="90%" border="0" align="center">
   <tr height="90px">
     <td>&nbsp;</td>
