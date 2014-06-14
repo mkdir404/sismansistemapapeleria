@@ -21,7 +21,7 @@
 
 
 		     $( ".datepicker" ).datepicker({
-		      showOn: "button",
+		      showOn: "both",
 		      buttonImage: "../img/calendario.png",
 		      buttonImageOnly: true
 		    });	

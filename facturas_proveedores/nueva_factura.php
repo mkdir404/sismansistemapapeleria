@@ -14,7 +14,24 @@ $codfacturatmp=mysql_insert_id();
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar.js"></script>
 		<script type="text/JavaScript" language="javascript" src="../calendario/lang/calendar-sp.js"></script>
 		<script type="text/JavaScript" language="javascript" src="../calendario/calendar-setup.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  		<script type="text/javascript" src="../funciones/calendario.js"></script>
+  		<style>
+		div.ui-datepicker{
+		 font-size:10px;
+		}
+  		</style>  
 		<script language="javascript">
+
+		function inputKeyUp(e) {
+		    e.which = e.which || e.keyCode;
+		    if(e.which == 13) {
+		       validar();
+		    }
+		}
+
 		var cursor;
 		if (document.all) {
 		// Está utilizando EXPLORER
@@ -64,9 +81,10 @@ $codfacturatmp=mysql_insert_id();
 		}
 		
 		function cancelar() {
-			location.href="index.php";
+			var r = confirm('\u00bf Est\u00e9 seguro que desea cancelar ? ');
+			if(r) location.href="index.php";			
 		}
-		
+
 		function limpiarcaja() {
 			document.getElementById("nombre").value="";
 			document.getElementById("nif").value="";
@@ -192,15 +210,15 @@ $codfacturatmp=mysql_insert_id();
 						<? $hoy=date("d/m/Y"); ?>
 						<tr>
 							<td width="6%">Fecha</td>
-						    <td width="27%"><input NAME="fecha" type="text" class="cajaPequena" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>" readonly> <img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">
+						    <td width="27%"><input NAME="fecha" type="text" class="cajaPequena datepicker" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>" readonly> <!--<img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">-->
         <script type="text/javascript">
-					Calendar.setup(
+					/*Calendar.setup(
 					  {
 					inputField : "fecha",
 					ifFormat   : "%d/%m/%Y",
 					button     : "Image1"
 					  }
-					);
+					);*/
 		</script></td>
 				            <td width="3%">IVA</td>
 				            <td width="64%"><input NAME="iva" type="text" class="cajaPequena" id="iva" size="5" maxlength="5" value="16" onChange="cambio_iva()"> %</td>
@@ -219,7 +237,7 @@ $codfacturatmp=mysql_insert_id();
 				<table class="fuente8" width="98%" cellspacing=0 cellpadding=3 border=0>
 				  <tr>
 					<td width="11%">Referencia</td>
-					<td colspan="10"><input NAME="referencia" type="text" class="cajaMedia" id="referencia" size="15" maxlength="15" readonly> <img src="../img/ver.png" width="16" height="16" onClick="ventanaArticulos()" onMouseOver="style.cursor=cursor" title="Buscar articulos"></td>
+					<td colspan="10"><input NAME="referencia" type="text" class="cajaMedia" id="referencia" size="15" maxlength="15" onkeyup="inputKeyUp(event)" readonly> <img src="../img/ver.png" width="16" height="16" onClick="ventanaArticulos()" onMouseOver="style.cursor=cursor" title="Buscar articulos"></td>
 				  </tr>
 				  <tr>
 					<td>Descripcion</td>

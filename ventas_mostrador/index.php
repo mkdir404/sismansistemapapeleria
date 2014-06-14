@@ -69,7 +69,7 @@ $codfacturatmp=mysql_insert_id();
 		
 		function cancelar() {
 
-			var r = confirm('\u00bf Est\u00e9 seguro que desea cancelar la venta ? ');
+			var r = confirm('\u00bf Est\u00e9 seguro que desea cancelar ? ');
 			if(r) location.href="index.php";			
 		}
 		
@@ -202,13 +202,13 @@ $codfacturatmp=mysql_insert_id();
 							<td width="6%">Fecha</td>
 						    <td width="27%"><input NAME="fecha" type="text" class="cajaPequena datepicker" id="fecha" size="10" maxlength="10" value="<? echo $hoy?>" readonly> <!--<img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'">-->
         <script type="text/javascript">
-					Calendar.setup(
+					/*Calendar.setup(
 					  {
 					inputField : "fecha",
 					ifFormat   : "%d/%m/%Y",
 					button     : "Image1"
 					  }
-					);
+					);*/
 		</script></td>
 				            <td width="3%">IVA</td>
 				            <td width="64%"><input NAME="iva" type="text" class="cajaMinima" id="iva" size="5" maxlength="5" value="16" onChange="cambio_iva()"> %</td>

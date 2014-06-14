@@ -73,13 +73,13 @@ $hoy=date("d/m/Y");
 						  <td>Fecha de cierre</td>
 						  <td><input id="fechainicio" type="text" class="cajaPequena datepicker" NAME="fechainicio" maxlength="10" value="<? echo $hoy?>" readonly><!--<img src="../img/calendario.png" name="Image1" id="Image1" width="16" height="16" border="0" id="Image1" onMouseOver="this.style.cursor='pointer'" title="Calendario">-->
         <script type="text/javascript">
-					Calendar.setup(
+					/*Calendar.setup(
 					  {
 					inputField : "fechainicio",
 					ifFormat   : "%d/%m/%Y",
 					button     : "Image1"
 					  }
-					);
+					);*/
 		</script>	</td>
 						  <td>&nbsp;</td>
 						  <td>&nbsp;</td>
